@@ -1,0 +1,33 @@
+Requirement Analysis: 
+    Discussion with customer/stake-holders to find what the requirements of the project are.
+    During this step, we find what is the expectation and dependencies to call the project a success. 
+    A cost and time-requirement assesment is also done to determine feasibility of continuing this project.
+    This info is stored in an SRS(Software Requirement Specification) document.
+
+Design:
+    Developer/Architect creates DSD(Design Specification Document) that includes actual hardware/software requirements to create/continue the project.
+    This will include specifics such as back end database requirements and any 3rd-party needs.
+    They will also review these specifications with the customer/client so that any type of possible risks or budget/time-constraints are brought to light.
+    This starts with a High level design where the overall architecture is shown.
+    Senior developers will then create a low level document explaining the individual features and components of the product and how they interact to complete the desired prioject.
+    This design needs to be approved by the client/customer prior to continuing.
+
+Coding:
+    Developers now take time to work on the actual coding of features based on the previously created requirement documentation.
+    Unit testing is also completed to confirm these individual code pieces work individually to complete each piece's function.
+    A build in created and handed off to testers.
+
+Testing:
+    A build with multiple features is received and the testers will confirm pieces can work together to complete the client/customer end-goal.
+    Bugs are identified during this phase and provided to the developers to correct and resubmit to testers.
+    This cycle continues until the test team determines the product feels ready to ship.
+
+Development & Maintenance:
+    Customer receives the product for end users to be interacting with the final product.
+    The end users may find other issues and can submit bugs to the production team.
+    This team will maintain bug fixing and re-release of product for customers to continue using the corrected product.
+
+
+
+
+z
