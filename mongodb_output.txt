@@ -1,0 +1,149 @@
+> use employees;
+switched to db employees
+> db.createUser({
+... user: "intern",
+... pwd:"intern123",
+... roles:[{ role:"readWrite", db:"employees"}]
+... });
+Successfully added user: {
+	"user" : "intern",
+	"roles" : [
+		{
+			"role" : "readWrite",
+			"db" : "employees"
+		}
+	]
+}
+> db.createCollection("internBatch1");
+{ "ok" : 1 }
+> db.createCollection("internBatch2");
+{ "ok" : 1 }
+> db.internBatch1.insertMany([
+... {id: 1, name: 'Sarah', age: 5, department: 'Accounting', role: 'PM', status: 'Activated', createdAt: '2021-04-01'},
+... {id: 2, name: 'Tim', age: 10, department: 'Engineering', role: 'QA', status: 'Pending', createdAt: '2021-04-02'},
+... {id: 3, name: 'Joe', age: 17, department: 'Management', role: 'PM', status: 'Activated', createdAt: '2021-04-03'},
+... {id: 4, name: 'Tolu', age: 25, department: 'Management', role: 'Dev', status: 'Pending', createdAt: '2021-04-03'}
+... ]);
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("607eff213cdb511f54f6b931"),
+		ObjectId("607eff213cdb511f54f6b932"),
+		ObjectId("607eff213cdb511f54f6b933"),
+		ObjectId("607eff213cdb511f54f6b934")
+	]
+}
+> db.internBatch2.insertMany([
+... {id: 1, name: 'Rob', age: 5, department: 'Engineering', role: 'QA', status: 'Activated', createdAt: '2021-04-04'},
+... {id: 2, name: 'Ade', age: 10, department: 'Management', role: 'QA', status: 'Pending', createdAt: '2021-04-05'},
+... {id: 3, name: 'Tom', age: 17, department: 'Security', role: 'QA', status: 'Activated', createdAt: '2021-04-05'},
+... {id: 4, name: 'Jide', age: 26, department: 'Accounting', role: 'Dev', status: 'Activated', createdAt: '2021-04-07'}
+... ]);
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("607eff2a3cdb511f54f6b935"),
+		ObjectId("607eff2a3cdb511f54f6b936"),
+		ObjectId("607eff2a3cdb511f54f6b937"),
+		ObjectId("607eff2a3cdb511f54f6b938")
+	]
+}
+> show collections;
+internBatch1
+internBatch2
+> db.internBatch1.find().pretty();
+{
+	"_id" : ObjectId("607eff213cdb511f54f6b931"),
+	"id" : 1,
+	"name" : "Sarah",
+	"age" : 5,
+	"department" : "Accounting",
+	"role" : "PM",
+	"status" : "Activated",
+	"createdAt" : "2021-04-01"
+}
+{
+	"_id" : ObjectId("607eff213cdb511f54f6b932"),
+	"id" : 2,
+	"name" : "Tim",
+	"age" : 10,
+	"department" : "Engineering",
+	"role" : "QA",
+	"status" : "Pending",
+	"createdAt" : "2021-04-02"
+}
+{
+	"_id" : ObjectId("607eff213cdb511f54f6b933"),
+	"id" : 3,
+	"name" : "Joe",
+	"age" : 17,
+	"department" : "Management",
+	"role" : "PM",
+	"status" : "Activated",
+	"createdAt" : "2021-04-03"
+}
+{
+	"_id" : ObjectId("607eff213cdb511f54f6b934"),
+	"id" : 4,
+	"name" : "Tolu",
+	"age" : 25,
+	"department" : "Management",
+	"role" : "Dev",
+	"status" : "Pending",
+	"createdAt" : "2021-04-03"
+}
+> db.internBatch2.find().pretty();
+{
+	"_id" : ObjectId("607eff2a3cdb511f54f6b935"),
+	"id" : 1,
+	"name" : "Rob",
+	"age" : 5,
+	"department" : "Engineering",
+	"role" : "QA",
+	"status" : "Activated",
+	"createdAt" : "2021-04-04"
+}
+{
+	"_id" : ObjectId("607eff2a3cdb511f54f6b936"),
+	"id" : 2,
+	"name" : "Ade",
+	"age" : 10,
+	"department" : "Management",
+	"role" : "QA",
+	"status" : "Pending",
+	"createdAt" : "2021-04-05"
+}
+{
+	"_id" : ObjectId("607eff2a3cdb511f54f6b937"),
+	"id" : 3,
+	"name" : "Tom",
+	"age" : 17,
+	"department" : "Security",
+	"role" : "QA",
+	"status" : "Activated",
+	"createdAt" : "2021-04-05"
+}
+{
+	"_id" : ObjectId("607eff2a3cdb511f54f6b938"),
+	"id" : 4,
+	"name" : "Jide",
+	"age" : 26,
+	"department" : "Accounting",
+	"role" : "Dev",
+	"status" : "Activated",
+	"createdAt" : "2021-04-07"
+}
+> show databases;
+admin      0.000GB
+config     0.000GB
+employees  0.000GB
+local      0.000GB
+> db.internBatch1.drop();
+true
+> db.internBatch2.drop();
+true
+> db.dropDatabase();
+{ "dropped" : "employees", "ok" : 1 }
+> db.dropUser('intern');
+true
+>
